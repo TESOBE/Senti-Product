@@ -1,0 +1,39 @@
+name: Update search tags
+
+# Rewrites each page's search and link-preview tags, sitemap.xml, robots.txt and llms.txt with scripts/update_seo.py
+# whenever a page changes, and commits the result. It fails, naming the page, if a page is missing from the script's list.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**.html"
+      - "scripts/update_seo.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # the whole history, so the sitemap can date each page by its last commit
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Write the tags, sitemap, robots.txt and llms.txt
+        run: python3 scripts/update_seo.py
+      - name: Commit them if they changed
+        run: |
+          if git diff --quiet -- docs; then
+            echo "No change"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "Update search tags, sitemap and llms.txt"
+          git push

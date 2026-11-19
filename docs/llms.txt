@@ -1,0 +1,12 @@
+# TESOBE Senti
+
+> TESOBE Senti watches a running API, app, website or service for hours, not seconds: its source code, logs, metrics and telemetry. It sends one short briefing with at most three suggestions, ranked by impact, and fixes them when asked, on the customer's own infrastructure with read-only credentials and capped AI spend. It is made by TESOBE GmbH in Berlin, and comes in two editions: one for any API, app or website, and OBP Senti for the Open Bank Project.
+
+## Senti
+
+- [TESOBE Senti: watches your APIs and apps, and suggests security and performance fixes](https://senti.tesobe.com/): TESOBE Senti watches your running API, App, Site or Service - its source code, logs, metrics and telemetry - and tells your developers the improvements that matter most.
+
+## Optional
+
+- [OBP Senti](https://obp-api-product.tesobe.com/senti.html): the edition for OBP-API and its apps.
+- [Contact TESOBE](https://www.tesobe.com/#contact): talk to the team that makes it.
