@@ -37,10 +37,12 @@ PAGES = [
 
 # llms.txt: the summary under the site's name, more detail, and links beyond this site's own pages.
 LLMS_SUMMARY = (
-    'TESOBE Senti watches a running API, app, website or service for hours, not seconds: its source code, logs, metrics '
-    'and telemetry. It sends one short briefing with at most three suggestions, ranked by impact, and fixes them when '
-    'asked, on the customer\'s own infrastructure with read-only credentials and capped AI spend. It is made by TESOBE GmbH '
-    'in Berlin, and is set up for each customer\'s own system. It comes ready for the Open Bank Project (OBP-API and its apps).'
+    'TESOBE Senti is a semi-proactive AI agent that runs beside development, staging and production systems. It combines '
+    'their logs, metrics and telemetry (its own collectors, or Prometheus and Loki) with the source code behind them, finds '
+    'the bugs, slowdowns and security holes that matter most, and proposes code fixes that a developer reviews and commits. '
+    'It runs on the customer\'s own infrastructure, as its own operating system user with read-only access, and uses Claude '
+    'Code with a spending cap per run. It is made by TESOBE GmbH in Berlin, and comes configured for the Open Bank Project '
+    '(OBP-API and its apps). Source: https://github.com/TESOBE/Senti (AGPL-3.0).'
 )
 LLMS_DETAILS = ''
 LLMS_MORE = {
