@@ -40,12 +40,12 @@ LLMS_SUMMARY = (
     'TESOBE Senti watches a running API, app, website or service for hours, not seconds: its source code, logs, metrics '
     'and telemetry. It sends one short briefing with at most three suggestions, ranked by impact, and fixes them when '
     'asked, on the customer\'s own infrastructure with read-only credentials and capped AI spend. It is made by TESOBE GmbH '
-    'in Berlin, and comes in two editions: one for any API, app or website, and OBP Senti for the Open Bank Project.'
+    'in Berlin, and is set up for each customer\'s own system. It comes ready for the Open Bank Project (OBP-API and its apps).'
 )
 LLMS_DETAILS = ''
 LLMS_MORE = {
     'Optional': [
-        ('OBP Senti', 'https://obp-api-product.tesobe.com/senti.html', 'the edition for OBP-API and its apps.'),
+        ('Senti configured for OBP', 'https://obp-api-product.tesobe.com/senti.html', 'Senti ready for OBP-API and its apps.'),
         ('Contact TESOBE', 'https://www.tesobe.com/#contact', 'talk to the team that makes it.'),
     ],
 }
