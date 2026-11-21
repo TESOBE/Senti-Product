@@ -320,6 +320,27 @@
   .look h3{font-family:var(--sans); font-size:17px; font-weight:600; letter-spacing:-.01em; margin:0 0 10px}
   .look p{font-size:15.5px; line-height:1.55; color:var(--ink-2); margin:0}
 
+  /* ---- how it works ---- */
+  .flow{margin:0; background:var(--surface); border:1px solid var(--rule); padding:12px}
+  .flow svg{display:block; width:100%; height:auto}
+  @media (max-width:600px){ .flow{overflow-x:auto} .flow svg{min-width:600px} }
+  .flow .box{fill:none; stroke:var(--rule-strong); stroke-width:1.25}
+  .flow .box.main{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2}
+  .flow .name{fill:var(--ink); font-family:var(--sans); font-weight:600; font-size:14px}
+  .flow .line{fill:var(--ink-2); font-family:var(--body); font-size:13.5px}
+  .flow .edge path{fill:none; stroke:var(--muted); stroke-width:1.25}
+  .flow .head{fill:var(--muted)}
+  .flow .elabel{fill:var(--muted); font-family:var(--mono); font-size:11px}
+  /* ---- services and instances ---- */
+  .fleet{overflow-x:auto; border:1px solid var(--rule); background:var(--surface); margin:0 0 26px}
+  .fleet table{border-collapse:collapse; width:100%; min-width:560px}
+  .fleet th, .fleet td{padding:12px 14px; text-align:left; border-top:1px solid var(--rule); vertical-align:top}
+  .fleet thead th{border-top:0; font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:500}
+  .fleet tbody th{font-family:var(--sans); font-size:15px; font-weight:600; color:var(--ink)}
+  .fleet tbody th span{display:block; font-family:var(--mono); font-size:11.5px; font-weight:400; color:var(--muted); margin-top:3px}
+  .fleet td{font-family:var(--mono); font-size:13px; color:var(--ink-2)}
+  .fleet td.live{color:var(--accent); font-weight:500}
+
   /* ---- lists ---- */
   .points{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:16px 28px}
   @media (max-width:640px){ .points{grid-template-columns:1fr} }
@@ -361,7 +382,7 @@
     section{ margin-top:26px; }
     .sv *{ animation:none !important; }
     .sv .hl, .sv .row{ opacity:1; }
-    .looks, .editions, .contact, .points li{ break-inside:avoid; }
+    .looks, .editions, .contact, .flow, .fleet, .points li{ break-inside:avoid; }
     a{ text-decoration:none; }
   }
 </style>
@@ -647,6 +668,89 @@
         <p>System resources: CPU, memory, disk and connections. Senti correlates a slow page, a slow endpoint or a burst of errors with the resource that ran out.</p>
       </div>
     </div>
+  </section>
+
+  <section id="how">
+    <div class="sechead"><h2>How it works</h2></div>
+    <p class="intro">Plain code collects the logs and numbers. The AI analyst reads them with your source code, only when something is new. A person decides on every change.</p>
+    <figure class="flow">
+      <svg viewBox="0 44 760 372" role="img" aria-label="How Senti works: the collector reads every instance of your services into a database; the AI analyst reads that and your source code, and writes a briefing; a developer reviews and commits every fix">
+        <defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="head" d="M0 0L10 5L0 10z"/></marker></defs>
+        <g class="edge">
+          <path d="M220 100H280" marker-end="url(#flow-arrow)"/>
+          <path d="M480 100H530" marker-end="url(#flow-arrow)"/>
+          <path d="M630 136V164H380V192" marker-start="url(#flow-arrow)" marker-end="url(#flow-arrow)"/>
+          <path d="M280 228H220" marker-start="url(#flow-arrow)" marker-end="url(#flow-arrow)"/>
+          <path d="M480 228H530" marker-start="url(#flow-arrow)" marker-end="url(#flow-arrow)"/>
+          <path d="M380 264V320" marker-start="url(#flow-arrow)" marker-end="url(#flow-arrow)"/>
+          <path d="M280 356H220" marker-start="url(#flow-arrow)" marker-end="url(#flow-arrow)"/>
+          <path d="M120 320V264" marker-end="url(#flow-arrow)"/>
+        </g>
+        <text class="elabel" x="515" y="156" text-anchor="middle">figures in, findings out</text>
+        <text class="elabel" x="128" y="298">commits</text>
+
+        <rect class="box" x="20" y="64" width="200" height="72" rx="8"/>
+        <text class="name" x="120" y="88" text-anchor="middle">Your services</text>
+        <text class="line" x="120" y="108" text-anchor="middle">every instance, local to live</text>
+        <text class="line" x="120" y="124" text-anchor="middle">read with read-only access</text>
+
+        <rect class="box" x="280" y="64" width="200" height="72" rx="8"/>
+        <text class="name" x="380" y="88" text-anchor="middle">Collector</text>
+        <text class="line" x="380" y="108" text-anchor="middle">plain code, no AI</text>
+        <text class="line" x="380" y="124" text-anchor="middle">logs, metrics, telemetry</text>
+
+        <rect class="box" x="530" y="64" width="200" height="72" rx="8"/>
+        <text class="name" x="630" y="88" text-anchor="middle">Database</text>
+        <text class="line" x="630" y="108" text-anchor="middle">on your own server</text>
+        <text class="line" x="630" y="124" text-anchor="middle">counts, trends, findings</text>
+
+        <rect class="box" x="20" y="192" width="200" height="72" rx="8"/>
+        <text class="name" x="120" y="216" text-anchor="middle">Your repositories</text>
+        <text class="line" x="120" y="236" text-anchor="middle">the commit each one runs</text>
+        <text class="line" x="120" y="252" text-anchor="middle">fixes are prepared here</text>
+
+        <rect class="box main" x="280" y="192" width="200" height="72" rx="8"/>
+        <text class="name" x="380" y="216" text-anchor="middle">Senti analyst</text>
+        <text class="line" x="380" y="236" text-anchor="middle">finds causes, reviews code,</text>
+        <text class="line" x="380" y="252" text-anchor="middle">proposes fixes; capped spend</text>
+
+        <rect class="box" x="530" y="192" width="200" height="72" rx="8"/>
+        <text class="name" x="630" y="216" text-anchor="middle">AI model</text>
+        <text class="line" x="630" y="236" text-anchor="middle">Claude, through your</text>
+        <text class="line" x="630" y="252" text-anchor="middle">own account</text>
+
+        <rect class="box" x="20" y="320" width="200" height="72" rx="8"/>
+        <text class="name" x="120" y="344" text-anchor="middle">Developer</text>
+        <text class="line" x="120" y="364" text-anchor="middle">rates suggestions,</text>
+        <text class="line" x="120" y="380" text-anchor="middle">reviews and commits</text>
+
+        <rect class="box" x="280" y="320" width="200" height="72" rx="8"/>
+        <text class="name" x="380" y="344" text-anchor="middle">Briefing</text>
+        <text class="line" x="380" y="364" text-anchor="middle">most important suggestions</text>
+        <text class="line" x="380" y="380" text-anchor="middle">Fix this, Commit, Dismiss</text>
+      </svg>
+    </figure>
+  </section>
+
+  <section id="fleet">
+    <div class="sechead"><h2>Every service, every instance</h2></div>
+    <p class="intro">Your system is rarely one thing. Senti watches all your services, each built from its own repository, and every instance of each one, from a developer's laptop to production.</p>
+    <div class="fleet">
+      <table>
+        <thead><tr><th>Service and repository</th><th>Local</th><th>Test</th><th>Staging</th><th>Production</th></tr></thead>
+        <tbody>
+          <tr><th>Accounts API<span>accounts-api</span></th><td>9c41e2a</td><td>9c41e2a</td><td>7d03b1f</td><td class="live">5e8a6c0</td></tr>
+          <tr><th>Customer app<span>customer-app</span></th><td>b17f0d9</td><td>a52c3e4</td><td>a52c3e4</td><td class="live">a52c3e4</td></tr>
+          <tr><th>Payments service<span>payments</span></th><td>e60d8b2</td><td>e60d8b2</td><td>e60d8b2</td><td class="live">c9f1a73</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="points">
+      <li><b>One Senti for all of it</b>Add as many services and instances as you run. Each is watched on its own and shown side by side</li>
+      <li><b>The code each instance runs</b>Every instance may run a different commit. Senti reads the exact one, so a finding points at the code that is really live there</li>
+      <li><b>Your names</b>Local, test, staging, pre-production, production: call your instances whatever your teams already call them</li>
+      <li><b>Learns across the lot</b>What you accept or dismiss on one instance shapes the suggestions for all of them</li>
+    </ul>
   </section>
 
   <section id="briefing">
